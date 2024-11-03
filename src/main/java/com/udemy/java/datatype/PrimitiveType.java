@@ -1,4 +1,4 @@
-package come.udemy.java.datatype;
+package com.udemy.java.datatype;
 
 public class PrimitiveType {
     public static void main(String[] args) {
