@@ -1,5 +1,7 @@
 package com.udemy.java.fnInterface;
 
+import com.udemy.java.predicate.RulesEngine;
+
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -35,9 +37,10 @@ public class TestPredicate {
         nameList.add("Sebastin");
         nameList.add("Arun");
         nameList.add("Senba");
+        nameList.add("");
 
-        Predicate<String> checkGotS = (s) -> s.contains("S");
-        nameList.removeIf(checkGotS);
+        RulesEngine.get()
+                .forEach(nameList::removeIf);
         System.out.println(nameList);
 
     }
