@@ -1,6 +1,7 @@
 package com.udemy.java.fnInterface;
 
 import com.udemy.java.predicate.RulesEngine;
+import com.udemy.java.streams.FindingSquareLazinessDemoMain;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -15,15 +16,7 @@ public class TestPredicate {
         System.out.println(predicate.test(12));
 
         Set<Integer> set = new HashSet<>();
-        set.add(1);
-        set.add(2);
-        set.add(3);
-        set.add(4);
-        set.add(5);
-        set.add(6);
-        set.add(7);
-        set.add(8);
-        set.add(9);
+        FindingSquareLazinessDemoMain.createSet(set);
 
         Predicate<Integer> lessThanThree = (i) -> i < 3;
         Predicate<Integer> greaterThanEight = (i) -> i > 8;
