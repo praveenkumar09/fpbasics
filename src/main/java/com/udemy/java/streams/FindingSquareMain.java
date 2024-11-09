@@ -27,11 +27,15 @@ public class FindingSquareMain {
         //Streams
         numbersSet
                 .stream()
-                .filter(i -> i % 2 == 0)
+                .filter(i -> {
+                    System.out.println("Filter received: " + i);
+                    return i % 2 == 0;
+                })
                 .limit(3)
-                .map(i -> i * i)
+                .map(i -> {
+                    System.out.println("Map received: " + i);
+                    return i * i;
+                })
                 .forEach(System.out::println);
-
-
     }
 }
