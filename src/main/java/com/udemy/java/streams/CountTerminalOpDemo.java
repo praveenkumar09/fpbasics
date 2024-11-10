@@ -14,8 +14,8 @@ public class CountTerminalOpDemo {
 
         long count = listOfIntegers
                 .stream()
-                .flatMap(List::stream)
-                .count();
+                .mapToLong(List::size)
+                .sum();
         System.out.println(count);
 
     }
