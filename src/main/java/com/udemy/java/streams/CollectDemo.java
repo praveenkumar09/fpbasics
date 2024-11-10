@@ -1,5 +1,6 @@
 package com.udemy.java.streams;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Predicate;
@@ -9,6 +10,8 @@ import static java.util.stream.Collectors.*;
 
 public class CollectDemo {
     public static void main(String[] args) {
+
+        System.out.println("Before :: "+ LocalDateTime.now());
         List<Person> personList = new ArrayList<>();
         personList.add(new Person("Praveen","Male","Malaysia",true));
         personList.add(new Person("Swetha","Female","Malaysia",false));
@@ -19,6 +22,7 @@ public class CollectDemo {
         personList.add(new Person("Jenny","Female","India",false));
 
         performSearch(personList,(person) -> !person.getName().toLowerCase().contains("z"));
+        System.out.println("Before :: "+ LocalDateTime.now());
     }
 
     private static void performSearch(List<Person> personList, Predicate<Person> filterPredicate) {
