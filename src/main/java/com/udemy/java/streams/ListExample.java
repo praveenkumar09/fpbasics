@@ -27,7 +27,6 @@ public class ListExample{
         personList
                 .stream()
                 .filter(filterPredicate)
-                .map(Person::getName)
                 .forEach(System.out::println);
     }
 }
