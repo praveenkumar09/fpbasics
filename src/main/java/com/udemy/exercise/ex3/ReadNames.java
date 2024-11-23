@@ -3,12 +3,13 @@ package com.udemy.exercise.ex3;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
+import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.toCollection;
+import static java.util.stream.Collectors.*;
 
 public class ReadNames {
     public static void main(String[] args) throws IOException {
@@ -27,6 +28,37 @@ public class ReadNames {
                 )
                 .count();
         System.out.println(countOfChars);
+        //** ex-3 other solution **//
+        long countOfCharsWithMap = firstNameList
+                .parallelStream()
+                .filter(name -> name.startsWith("M"))
+                .map(String::chars)
+                .flatMap(IntStream::boxed)
+                .count();
+        System.out.println(countOfCharsWithMap);
+        //** ex-4 solution**//
+        ConcurrentMap<String, Long> collectResult = firstNameList
+                .parallelStream()
+                .map(names -> names.charAt(0))
+                .collect(groupingByConcurrent(
+                        String::valueOf,
+                        counting()
+                ));
+        System.out.println(collectResult);
+        //** ex-5 solution
+        List<String> ex5List = firstNameList
+                .parallelStream()
+                .filter(name -> name.contains("-"))
+                .map(name -> name.replace("-", " "))
+                .toList();
+        System.out.println(ex5List.size());
+        //** ex-6 solution **/
+        firstNameList
+                .parallelStream()
+                .max(Comparator.comparingInt(String::length))
+                .ifPresentOrElse(System.out::println,
+                        () -> System.out.println("Error"));
+
 
     }
 }
